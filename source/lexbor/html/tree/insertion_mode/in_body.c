@@ -14,6 +14,9 @@
 #include "lexbor/html/tokenizer/state.h"
 #include "lexbor/html/tokenizer/state_rcdata.h"
 
+bool
+lxb_html_tree_insertion_mode_in_body_anything_else_closed(lxb_html_tree_t *tree,
+                                                          lxb_html_token_t *token);
 
 /*
  * User case insertion mode.
@@ -922,23 +925,23 @@ lxb_html_tree_insertion_mode_in_body_a(lxb_html_tree_t *tree,
                                                                token->tag_id,
                                                                NULL);
     if (node != NULL) {
-        /* bool is; */
+        bool is;
 
         lxb_html_tree_parse_error(tree, token,
                                   LXB_HTML_RULES_ERROR_UNELINACFOST);
 
-        lxb_html_tree_adoption_agency_algorithm(tree, token,
+        is = lxb_html_tree_adoption_agency_algorithm(tree, token,
                                                 &tree->status);
         if (tree->status != LXB_STATUS_OK) {
             return lxb_html_tree_process_abort(tree);
         }
 
-/*
+
         if (is) {
             return lxb_html_tree_insertion_mode_in_body_anything_else_closed(tree,
                                                                              token);
         }
-*/
+
 
         lxb_html_tree_active_formatting_remove_by_node(tree, node);
         lxb_html_tree_open_elements_remove_by_node(tree, node);
@@ -1008,21 +1011,21 @@ lxb_html_tree_insertion_mode_in_body_nobr(lxb_html_tree_t *tree,
     node = lxb_html_tree_element_in_scope(tree, LXB_TAG_NOBR, LXB_NS_HTML,
                                           LXB_HTML_TAG_CATEGORY_SCOPE);
     if (node != NULL) {
-        /* bool is; */
+        bool is;
 
         lxb_html_tree_parse_error(tree, token,
                                   LXB_HTML_RULES_ERROR_UNELINSC);
 
-        lxb_html_tree_adoption_agency_algorithm(tree, token, &tree->status);
+        is = lxb_html_tree_adoption_agency_algorithm(tree, token, &tree->status);
         if (tree->status != LXB_STATUS_OK) {
             return lxb_html_tree_process_abort(tree);
         }
-/*
+
         if (is) {
             return lxb_html_tree_insertion_mode_in_body_anything_else_closed(tree,
                                                                              token);
         }
-*/
+
         tree->status = lxb_html_tree_active_formatting_reconstruct_elements(tree);
         if (tree->status != LXB_STATUS_OK) {
             return lxb_html_tree_process_abort(tree);
@@ -1051,19 +1054,19 @@ lxb_inline bool
 lxb_html_tree_insertion_mode_in_body_abcefinstu_closed(lxb_html_tree_t *tree,
                                                        lxb_html_token_t *token)
 {
-    /* bool is; */
+    bool is;
 
-    lxb_html_tree_adoption_agency_algorithm(tree, token, &tree->status);
+    is = lxb_html_tree_adoption_agency_algorithm(tree, token, &tree->status);
     if (tree->status != LXB_STATUS_OK) {
         return lxb_html_tree_process_abort(tree);
     }
 
-/*
+
     if (is) {
         return lxb_html_tree_insertion_mode_in_body_anything_else_closed(tree,
                                                                          token);
     }
-*/
+
 
     return true;
 }
@@ -1645,7 +1648,7 @@ lxb_html_tree_insertion_mode_in_body_noscript(lxb_html_tree_t *tree,
     return true;
 }
 
-lxb_inline bool
+bool
 lxb_html_tree_insertion_mode_in_body_anything_else_closed(lxb_html_tree_t *tree,
                                                           lxb_html_token_t *token)
 {
