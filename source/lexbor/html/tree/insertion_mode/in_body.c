@@ -938,7 +938,7 @@ lxb_html_tree_insertion_mode_in_body_a(lxb_html_tree_t *tree,
 
 
         if (is) {
-            return lxb_html_tree_insertion_mode_in_body_anything_else_closed(tree,
+            lxb_html_tree_insertion_mode_in_body_anything_else_closed(tree,
                                                                              token);
         }
 
@@ -1022,7 +1022,7 @@ lxb_html_tree_insertion_mode_in_body_nobr(lxb_html_tree_t *tree,
         }
 
         if (is) {
-            return lxb_html_tree_insertion_mode_in_body_anything_else_closed(tree,
+            lxb_html_tree_insertion_mode_in_body_anything_else_closed(tree,
                                                                              token);
         }
 
@@ -1063,7 +1063,7 @@ lxb_html_tree_insertion_mode_in_body_abcefinstu_closed(lxb_html_tree_t *tree,
 
 
     if (is) {
-        return lxb_html_tree_insertion_mode_in_body_anything_else_closed(tree,
+        lxb_html_tree_insertion_mode_in_body_anything_else_closed(tree,
                                                                          token);
     }
 
